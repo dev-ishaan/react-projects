@@ -7,6 +7,7 @@ export default function About(props) {
   }
   return (
     <>
+    <div className="container my-5">
       <div className="card my-4 mx-5" style={{ width: '18rem'}}>
         {/* <img src="..." className="card-img-top" alt="..."/> */}
         <div className="card-body" style={myStyle}>
@@ -18,7 +19,8 @@ export default function About(props) {
               limit.</p>            
               <a href="https://www.google.com/" target='_blank' rel="noreferrer" className="btn btn-primary">Link to Google</a>
         </div>
-        </div>
+      </div>
+    </div>
     </>
   )
 }
