@@ -25,7 +25,7 @@ export default function Accordian(props) {
     // }
   return (
     <>
-      <div className="container">
+      <div className="container my-5">
       <div className="accordion" id="accordionExample" >
         <div className="accordion-item" >
             <h2 className="accordion-header" >
