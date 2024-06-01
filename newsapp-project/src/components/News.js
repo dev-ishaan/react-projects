@@ -44,16 +44,6 @@ export class News extends Component {
           "content": "Johannesburg, South AfricaCNN\r\n  — \r\nEarly results from South Africas election suggest the ruling African National Congress (ANC) party could lose its majority for the first time in 30 years.\r\nWith r… [+2142 chars]"
         },
         {
-          "source": { "id": null, "name": "The Detroit News" },
-          "author": "Detroit News",
-          "title": "Police clear Wayne State pro-Palestinian encampment - Detroit News",
-          "description": null,
-          "url": "https://www.detroitnews.com/story/news/local/detroit-city/2024/05/30/police-clear-wayne-state-pro-palestinian-encampment/73903734007/",
-          "urlToImage": null,
-          "publishedAt": "2024-05-30T14:15:00Z",
-          "content": null
-        },
-        {
           "source": { "id": "espn", "name": "ESPN" },
           "author": "Marcel Louis-Jacques",
           "title": "Sources - Dolphins, WR Jaylen Waddle agree to $84.75M extension - ESPN",
@@ -77,26 +67,13 @@ export class News extends Component {
         <h2 style={{textAlign: "center", margin:"5px"}}>NewsHub - Highlights</h2>
         <div className='container my-4'>
             <div className='row'>
-                <div className='col-md-4' style={{marginBottom: "20px"}}>
-                    <NewsItem title={"Title"} description={"Desc"} imageUrl={"https://a3.espncdn.com/combiner/i?img=%2Fphoto%2F2023%2F1117%2Fr1254144_1296x729_16%2D9.jpg"} newsUrl={"TODO"}/>
+                {this.state.articles.map((e)=>{
+                    return(
+                    <div className='col-md-4' style={{marginBottom: "20px"}} key={e.url}>
+                    <NewsItem title={e.title.slice(0, 40)} description={e.description.slice(0, 70)} imageUrl={e.urlToImage} url={e.url}/>
                 </div>
-                <div className='col-md-4' style={{marginBottom: "20px"}}>
-                    <NewsItem title={"Title"} description={"Desc"}/>
-                </div>
-                <div className='col-md-4' style={{marginBottom: "20px"}}>
-                    <NewsItem title={"Title"} description={"Desc"}/>
-                </div>
-            </div>
-            <div className='row'>
-                <div className='col-md-4' style={{marginBottom: "20px"}}>
-                    <NewsItem title={"Title"} description={"Desc"}/>
-                </div>
-                <div className='col-md-4' style={{marginBottom: "20px"}}>
-                    <NewsItem title={"Title"} description={"Desc"}/>
-                </div>
-                <div className='col-md-4' style={{marginBottom: "20px"}}>
-                    <NewsItem title={"Title"} description={"Desc"}/>
-                </div>
+                )})}
+                
             </div>
       </div>
       </>
