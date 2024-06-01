@@ -6,20 +6,45 @@ export class News extends Component {
         super();
         this.state = {
             articles: [],
-            loading: false
+            loading: true,
+            page: 1
         }
     }
 
     async componentDidMount(){
-        let url = "https://newsapi.org/v2/top-headlines?country=in&apiKey=dde03b8c705e421da41e78ea7bd0e32c"
+        let url = "https://newsapi.org/v2/top-headlines?country=in&apiKey=dde03b8c705e421da41e78ea7bd0e32c&page=1&pageSize=20"
         let data = await fetch(url);
         let parsedData = await data.json();
-        this.setState({articles: parsedData.articles, loading: true})
+        this.setState({articles: parsedData.articles, loading: true, totalResults: parsedData.totalResults})
     }
 
+    handlePrv = async ()=>{
+        let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=dde03b8c705e421da41e78ea7bd0e32c&page=${this.state.page-1}&pageSize=20`
+        let data = await fetch(url);
+        let parsedData = await data.json();
+        this.setState({
+            page: this.state.page - 1,
+            articles: parsedData.articles, loading: true
+        })
+    }
+    
+    handleNext = async ()=>{
+        if((this.state.page + 1 > Math.ceil(this.state.totalResults/20))){
+
+        }
+        else{
+            let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=dde03b8c705e421da41e78ea7bd0e32c&page=${this.state.page+1}&pageSize=20`
+            let data = await fetch(url);
+            let parsedData = await data.json();
+            this.setState({
+                page: this.state.page + 1,
+                articles: parsedData.articles, loading: true
+            })
+        }
+    }
   render() {
     return (
-        <>
+    <>
         <h2 style={{textAlign: "center", margin:"5px"}}>NewsHub - Highlights</h2>
         <div className='container my-4'>
             <div className='row'>
@@ -29,10 +54,13 @@ export class News extends Component {
                     <NewsItem title={e.title?e.title:""} description={e.description?e.description:""} imageUrl={e.urlToImage?e.urlToImage:"https://t4.ftcdn.net/jpg/02/51/95/53/360_F_251955356_FAQH0U1y1TZw3ZcdPGybwUkH90a3VAhb.jpg"} url={e.url}/>
                 </div>
                 )})}
-                
             </div>
-      </div>
-      </>
+        </div>
+        <div className="container d-flex justify-content-around my-5">
+            <button type="button" disabled={this.state.page<=1} class="btn btn-dark" onClick={this.handlePrv}>&larr; Previous</button>
+            <button type="button" class="btn btn-dark" onClick={this.handleNext}>Next &rarr;</button>
+        </div>
+    </>
     )
   }
 }
