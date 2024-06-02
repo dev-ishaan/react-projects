@@ -11,7 +11,7 @@ export default class App extends Component {
       <div>
         {/* Hello there {this.i} */}
         <Navbar/>
-        <News/>
+        <News pageSize={9} country={"in"} category={"general"}/>
       </div>
     )
   }
