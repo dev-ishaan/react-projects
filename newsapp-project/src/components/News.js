@@ -68,8 +68,8 @@ export class News extends Component {
         <h1 className="text-center my-4">NewsHub - Highlights</h1>
         {this.state.loading && <Spinner/>}
         <div className="container d-flex justify-content-between my-5">
-            <button type="button" disabled={this.state.page<=1} class="btn btn-dark" onClick={this.handlePrv}>&larr; Previous</button>
-            <button type="button" disabled={this.state.page + 1 > Math.ceil(this.state.totalResults/this.props.pageSize)} class="btn btn-dark" onClick={this.handleNext}>Next &rarr;</button>
+            <button type="button" disabled={this.state.page<=1} className="btn btn-dark" onClick={this.handlePrv}>&larr; Previous</button>
+            <button type="button" disabled={this.state.page + 1 > Math.ceil(this.state.totalResults/this.props.pageSize)} className="btn btn-dark" onClick={this.handleNext}>Next &rarr;</button>
         </div>
         {/* <h2 style={{textAlign: "center", margin:"5px"}}>NewsHub - Highlights</h2> */}
         <div className='container my-4'>
@@ -77,14 +77,15 @@ export class News extends Component {
                 {this.state.articles.map((e)=>{
                     return(
                     <div className='col-md-4' style={{marginBottom: "20px"}} key={e.url}>
-                    <NewsItem title={e.title?e.title:""} description={e.description?e.description:""} imageUrl={e.urlToImage?e.urlToImage:"https://t4.ftcdn.net/jpg/02/51/95/53/360_F_251955356_FAQH0U1y1TZw3ZcdPGybwUkH90a3VAhb.jpg"} url={e.url}/>
+                    <NewsItem title={e.title?e.title:""} description={e.description?e.description:""} imageUrl={e.urlToImage?e.urlToImage:"https://t4.ftcdn.net/jpg/02/51/95/53/360_F_251955356_FAQH0U1y1TZw3ZcdPGybwUkH90a3VAhb.jpg"} url={e.url} author={e.author?e.author:"Unknown"} time={new Date(e.publishedAt).toGMTString()} source={e.source.name} />
+
                     </div>
                 )})}
             </div>
         </div>
         <div className="container d-flex justify-content-between my-5">
-            <button type="button" disabled={this.state.page<=1} class="btn btn-dark" onClick={this.handlePrv}>&larr; Previous</button>
-            <button type="button" disabled={this.state.page + 1 > Math.ceil(this.state.totalResults/this.props.pageSize)} class="btn btn-dark" onClick={this.handleNext}>Next &rarr;</button>
+            <button type="button" disabled={this.state.page<=1} className="btn btn-dark" onClick={this.handlePrv}>&larr; Previous</button>
+            <button type="button" disabled={this.state.page + 1 > Math.ceil(this.state.totalResults/this.props.pageSize)} className="btn btn-dark" onClick={this.handleNext}>Next &rarr;</button>
         </div>
     </>
     )
