@@ -4,6 +4,7 @@ import Spinner from './Spinner';
 import PropTypes from 'prop-types'
 
 export class News extends Component {
+
     constructor() {
         super();
         this.state = {
@@ -12,14 +13,14 @@ export class News extends Component {
             page: 1
         }
     }
-
+        
     static defaultProps = {
         country: 'in',
         category: 'general',
         pageSize: 9
     }
 
-    static PropTypes = {
+    static propTypes = {
         country: PropTypes.string,
         category: PropTypes.string,
         pageSize: PropTypes.number
