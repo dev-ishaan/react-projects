@@ -1,4 +1,4 @@
-export default reducer = (state=0, action) =>{
+const moneyReducer = (state=0, action) =>{
     if(action.type ===  'WITHDRAW_MONEY') {
         return state - action.payload;
     }
@@ -9,3 +9,5 @@ export default reducer = (state=0, action) =>{
         return state
     }
 }
+
+export default moneyReducer
